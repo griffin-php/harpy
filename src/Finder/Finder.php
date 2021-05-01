@@ -39,6 +39,6 @@ class Finder
             }
         }
 
-        return $filepaths;
+        return array_unique($filepaths);
     }
 }

@@ -31,6 +31,7 @@ class FinderTest extends TestCase
         $filenames = $this->finder->find(
             $this->foo->url(),
             $this->bar->url(),
+            $this->bar->url(),
         );
 
         $this->assertCount(2, $filenames);
