@@ -3,5 +3,12 @@
   "description": "Search for Classes Names inside PHP Source Code",
   "type": "library",
   "license": "MIT",
-  "require": {}
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "scripts": {
+    "test": [
+      "phpunit"
+    ]
+  }
 }
