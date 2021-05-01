@@ -21,9 +21,13 @@ class FinderTest extends TestCase
 
     public function testTrue(): void
     {
-        $filenames = $this->finder->find($this->prefix('Foo.php'));
+        $filenames = $this->finder->find(
+            $this->prefix('Foo.php'),
+            $this->prefix('Bar.php'),
+        );
 
-        $this->assertCount(1, $filenames);
+        $this->assertCount(2, $filenames);
         $this->assertContains($this->prefix('Foo.php'), $filenames);
+        $this->assertContains($this->prefix('Bar.php'), $filenames);
     }
 }

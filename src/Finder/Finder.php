@@ -1,13 +1,15 @@
 <?php
 
-declare(strict_type=1);
+declare(strict_types=1);
 
 namespace Griffin\Harpy\Finder;
 
 class Finder
 {
-    public function find(string $filename)
+    public function find(string $filename, string ...$filenames)
     {
-        return [$filename];
+        array_unshift($filenames, $filename);
+
+        return $filenames;
     }
 }
