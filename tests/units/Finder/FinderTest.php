@@ -19,7 +19,7 @@ class FinderTest extends TestCase
         return __DIR__ . '/../../examples/' . $filename;
     }
 
-    public function testTrue(): void
+    public function testFile(): void
     {
         $filenames = $this->finder->find(
             $this->prefix('Foo.php'),
@@ -30,5 +30,14 @@ class FinderTest extends TestCase
         $this->assertCount(2, $filenames);
         $this->assertContains($this->prefix('Foo.php'), $filenames);
         $this->assertContains($this->prefix('Bar.php'), $filenames);
+    }
+
+    public function testDirectory(): void
+    {
+        $filenames = $this->finder->find($this->prefix('.'));
+
+        $this->assertCount(2, $filenames);
+        // $this->assertContains($this->prefix('Foo.php'), $filenames);
+        // $this->assertContains($this->prefix('Bar.php'), $filenames);
     }
 }

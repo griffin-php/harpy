@@ -20,8 +20,25 @@ class Finder
     {
         array_unshift($patterns, $pattern);
 
-        $filenames = array_filter($patterns, fn($pattern) => is_file($pattern));
+        $filepaths = [];
 
-        return $filenames;
+        foreach ($patterns as $pattern) {
+            if (is_dir($pattern)) {
+                foreach (scandir($pattern) as $filename) {
+                    if (! in_array($filename, ['.', '..'])) {
+                        $filepaths = array_merge(
+                            $filepaths,
+                            $this->find($pattern . DIRECTORY_SEPARATOR . $filename),
+                        );
+                    }
+                }
+            }
+
+            if (is_file($pattern)) {
+                $filepaths[] = $pattern;
+            }
+        }
+
+        return $filepaths;
     }
 }
