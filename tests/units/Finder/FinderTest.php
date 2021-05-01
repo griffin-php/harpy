@@ -24,6 +24,7 @@ class FinderTest extends TestCase
         $filenames = $this->finder->find(
             $this->prefix('Foo.php'),
             $this->prefix('Bar.php'),
+            $this->prefix('Unknown.php'),
         );
 
         $this->assertCount(2, $filenames);

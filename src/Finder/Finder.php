@@ -12,13 +12,15 @@ class Finder
     /**
      * Find Files
      *
-     * @param string $filename File
-     * @param string ..$filenames Additional Filenames
+     * @param string $pattern Search Pattern
+     * @param string ..$filenames Additional Search Patterns
      * @return string[] Found Files
      */
-    public function find(string $filename, string ...$filenames): array
+    public function find(string $pattern, string ...$patterns): array
     {
-        array_unshift($filenames, $filename);
+        array_unshift($patterns, $pattern);
+
+        $filenames = array_filter($patterns, fn($pattern) => is_file($pattern));
 
         return $filenames;
     }

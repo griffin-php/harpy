@@ -13,7 +13,6 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "": "tests/examples",
       "GriffinTest\\Harpy\\": "tests/units"
     }
   },
