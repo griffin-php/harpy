@@ -6,6 +6,17 @@
   "require-dev": {
     "phpunit/phpunit": "^9.5"
   },
+  "autoload": {
+    "psr-4": {
+      "Griffin\\Harpy\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "": "tests/examples",
+      "GriffinTest\\Harpy\\": "tests/units"
+    }
+  },
   "scripts": {
     "test": [
       "phpunit"
