@@ -18,6 +18,7 @@ class FinderTest extends TestCase
 
         $this->foo = vfsStream::newFile('Foo.php')->at($this->root);
         $this->bar = vfsStream::newFile('Bar.php')->at($this->root);
+        $this->baz = vfsStream::newFile('Baz.php')->at($this->root);
     }
 
     public function testFile(): void
@@ -30,14 +31,16 @@ class FinderTest extends TestCase
         $this->assertCount(2, $filenames);
         $this->assertContains($this->foo->url(), $filenames);
         $this->assertContains($this->bar->url(), $filenames);
+        $this->assertNotContains($this->baz->url(), $filenames);
     }
 
     public function testDirectory(): void
     {
         $filenames = $this->finder->find($this->root->url());
 
-        $this->assertCount(2, $filenames);
+        $this->assertCount(3, $filenames);
         $this->assertContains($this->foo->url(), $filenames);
         $this->assertContains($this->bar->url(), $filenames);
+        $this->assertContains($this->baz->url(), $filenames);
     }
 }
