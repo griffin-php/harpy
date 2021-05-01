@@ -1,0 +1,7 @@
+{
+  "name": "griffin/harpy",
+  "description": "Search for Classes Names inside PHP Source Code",
+  "type": "library",
+  "license": "MIT",
+  "require": {}
+}
