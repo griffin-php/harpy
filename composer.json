@@ -14,7 +14,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "GriffinTest\\Harpy\\": "tests/units"
+      "GriffinTest\\Harpy\\": "tests"
     }
   },
   "scripts": {
