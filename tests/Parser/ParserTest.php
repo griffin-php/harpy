@@ -30,4 +30,16 @@ class ParserTest extends TestCase
         $this->assertContains('Foo', $classnames);
         $this->assertContains('Bar', $classnames);
     }
+
+    public function testNamespace(): void
+    {
+        $classnames = $this->parser->parse(
+            $this->oneOne->url(),
+            $this->oneTwo->url(),
+        );
+
+        $this->assertCount(2, $classnames);
+        $this->assertContains('One\One', $classnames);
+        $this->assertContains('One\Two', $classnames);
+    }
 }
