@@ -21,5 +21,9 @@ class ParserTest extends TestCase
 
     public function testBasic(): void
     {
+        $classnames = $this->parser->parse($this->foo->url());
+
+        $this->assertCount(1, $classnames);
+        $this->assertContains('Foo', $classnames);
     }
 }
