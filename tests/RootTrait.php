@@ -39,6 +39,10 @@ trait RootTrait
 
         $this->index = vfsStream::newFile('index.php')->at($this->root);
 
+        $this->nodes = vfsStream::newDirectory('Nodes')->at($this->root);
+
+        $this->nodesAwkward = vfsStream::newFile('Awkward.php')->at($this->nodes);
+
         file_put_contents($this->foo->url(), '<?php class Foo {}');
         file_put_contents($this->bar->url(), '<?php class Bar {}');
         file_put_contents($this->baz->url(), '<?php class Baz {} class Qux {}');
@@ -52,6 +56,25 @@ require(__DIR__ . '/vendor/autoload.php');
 One\One::two();
 $response = (new Foo())->bar();
 var_dump($response);
+EOS
+);
+
+        file_put_contents($this->nodesAwkward->url(), <<<'EOS'
+<?php
+namespace {
+    class Top {}
+    ?><span>bacon</span><?php
+}
+namespace Nodes {
+    class Top {}
+    class Bottom {}
+}
+namespace {
+    var_dump('somebody');
+    class Bottom {}
+    var_dump('someone');
+}
+?>
 EOS
 );
 

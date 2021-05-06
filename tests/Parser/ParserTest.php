@@ -50,4 +50,15 @@ class ParserTest extends TestCase
     {
         $this->assertCount(0, $this->parser->parse($this->index->url()));
     }
+
+    public function testMultiple(): void
+    {
+        $classnames = $this->parser->parse($this->nodesAwkward->url());
+
+        $this->assertCount(4, $classnames);
+        $this->assertContains('Top', $classnames);
+        $this->assertContains('Bottom', $classnames);
+        $this->assertContains('Nodes\Top', $classnames);
+        $this->assertContains('Nodes\Bottom', $classnames);
+    }
 }

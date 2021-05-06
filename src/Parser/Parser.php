@@ -32,9 +32,11 @@ class Parser
             $nodes = $parser->parse(file_get_contents($filename));
             foreach ($nodes as $node) {
                 if ($node instanceof Namespace_) {
+                    $namespace = implode('\\', $node->name->parts ?? []);
+                    $namespace = ($namespace ? $namespace . '\\' : $namespace);
                     foreach ($node->stmts as $subnode) {
                         if ($subnode instanceof Class_) {
-                            $classnames[] = implode('\\', $node->name->parts) . '\\' . $subnode->name->name;
+                            $classnames[] = $namespace . $subnode->name->name;
                         }
                     }
                 }
