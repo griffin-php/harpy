@@ -22,13 +22,16 @@ class ParserTest extends TestCase
     public function testBasic(): void
     {
         $classnames = $this->parser->parse(
-            $this->foo->url(),
-            $this->bar->url(),
+            $this->foo->url(), // Foo
+            $this->bar->url(), // Bar
+            $this->baz->url(), // Baz + Qux
         );
 
-        $this->assertCount(2, $classnames);
+        $this->assertCount(4, $classnames);
         $this->assertContains('Foo', $classnames);
         $this->assertContains('Bar', $classnames);
+        $this->assertContains('Baz', $classnames);
+        $this->assertContains('Qux', $classnames);
     }
 
     public function testNamespace(): void

@@ -41,7 +41,7 @@ trait RootTrait
 
         file_put_contents($this->foo->url(), '<?php class Foo {}');
         file_put_contents($this->bar->url(), '<?php class Bar {}');
-        file_put_contents($this->baz->url(), '<?php class Baz {}');
+        file_put_contents($this->baz->url(), '<?php class Baz {} class Qux {}');
 
         file_put_contents($this->oneOne->url(), '<?php namespace One; class One {}');
         file_put_contents($this->oneTwo->url(), '<?php namespace One; class Two {}');
