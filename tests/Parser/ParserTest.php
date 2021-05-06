@@ -42,4 +42,9 @@ class ParserTest extends TestCase
         $this->assertContains('One\One', $classnames);
         $this->assertContains('One\Two', $classnames);
     }
+
+    public function testEmpty(): void
+    {
+        $this->assertCount(0, $this->parser->parse($this->index->url()));
+    }
 }

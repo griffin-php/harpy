@@ -34,14 +34,26 @@ trait RootTrait
 
         $this->one = vfsStream::newDirectory('One')->at($this->root);
 
-        $this->oneOne = vfsStream::newFile('One.php')->at($this->root);
-        $this->oneTwo = vfsStream::newFile('Two.php')->at($this->root);
+        $this->oneOne = vfsStream::newFile('One.php')->at($this->one);
+        $this->oneTwo = vfsStream::newFile('Two.php')->at($this->one);
+
+        $this->index = vfsStream::newFile('index.php')->at($this->root);
 
         file_put_contents($this->foo->url(), '<?php class Foo {}');
         file_put_contents($this->bar->url(), '<?php class Bar {}');
+        file_put_contents($this->baz->url(), '<?php class Baz {}');
 
         file_put_contents($this->oneOne->url(), '<?php namespace One; class One {}');
         file_put_contents($this->oneTwo->url(), '<?php namespace One; class Two {}');
+
+        file_put_contents($this->index->url(), <<<'EOS'
+<?php
+require(__DIR__ . '/vendor/autoload.php');
+One\One::two();
+$response = (new Foo())->bar();
+var_dump($response);
+EOS
+);
 
         return $this->root;
     }

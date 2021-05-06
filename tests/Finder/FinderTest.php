@@ -35,12 +35,9 @@ class FinderTest extends TestCase
 
     public function testDirectory(): void
     {
-        $filenames = $this->finder->find($this->root->url());
+        $filenames = $this->finder->find($this->one->url());
 
-        $this->assertCount(5, $filenames);
-        $this->assertContains($this->foo->url(), $filenames);
-        $this->assertContains($this->bar->url(), $filenames);
-        $this->assertContains($this->baz->url(), $filenames);
+        $this->assertCount(2, $filenames);
         $this->assertContains($this->oneOne->url(), $filenames);
         $this->assertContains($this->oneTwo->url(), $filenames);
     }
