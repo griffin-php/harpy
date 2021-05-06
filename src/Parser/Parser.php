@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Griffin\Harpy\Parser;
 
+use PhpParser\Node\Stmt\Class_;
+use PhpParser\ParserFactory;
+
 /**
  * Parser
  */
@@ -18,6 +21,21 @@ class Parser
      */
     public function parse(string $filename, string ...$filenames): array
     {
-        return ['Foo', 'Bar'];
+        array_unshift($filenames, $filename);
+
+        $classnames = [];
+
+        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
+
+        foreach ($filenames as $filename) {
+            $nodes = $parser->parse(file_get_contents($filename));
+            foreach ($nodes as $node) {
+                if ($node instanceof Class_) {
+                    $classnames[] = $node->name->name;
+                }
+            }
+        }
+
+        return $classnames;
     }
 }

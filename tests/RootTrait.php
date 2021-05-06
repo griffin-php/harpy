@@ -37,6 +37,9 @@ trait RootTrait
         $this->oneOne = vfsStream::newFile('One.php')->at($this->root);
         $this->oneTwo = vfsStream::newFile('Two.php')->at($this->root);
 
+        file_put_contents($this->foo->url(), '<?php class Foo {}');
+        file_put_contents($this->bar->url(), '<?php class Bar {}');
+
         return $this->root;
     }
 }
