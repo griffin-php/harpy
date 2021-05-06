@@ -3,9 +3,15 @@
   "description": "Search for Classes Names inside PHP Source Code",
   "type": "library",
   "license": "MIT",
+  "config": {
+    "sort-packages": true
+  },
+  "require": {
+    "nikic/php-parser": "^4.10"
+  },
   "require-dev": {
-    "phpunit/phpunit": "^9.5",
-    "mikey179/vfsstream": "^1.6"
+    "mikey179/vfsstream": "^1.6",
+    "phpunit/phpunit": "^9.5"
   },
   "autoload": {
     "psr-4": {
