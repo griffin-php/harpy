@@ -13,10 +13,11 @@ class Parser
      * Parse Files
      *
      * @param string $filename Filename
+     * @param string[] $filenames Additional Filenames
      * @return string[] Found Class Names
      */
-    public function parse(string $filename): array
+    public function parse(string $filename, string ...$filenames): array
     {
-        return ['Foo'];
+        return ['Foo', 'Bar'];
     }
 }
