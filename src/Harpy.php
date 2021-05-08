@@ -53,4 +53,20 @@ class Harpy
     {
         return $this->parser;
     }
+
+    /**
+     * Search for Classes defined into Files
+     *
+     * @param string $pattern Search Pattern
+     * @return string[] Found Class Names
+     */
+    public function search(string $pattern): array
+    {
+        $patterns = [$pattern];
+
+        $filenames  = $this->getFinder()->find(...$patterns);
+        $classnames = $this->getParser()->parse(...$filenames);
+
+        return $classnames;
+    }
 }
