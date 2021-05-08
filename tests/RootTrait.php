@@ -72,7 +72,7 @@ One\One::two();
 $response = (new Foo())->bar();
 var_dump($response);
 EOS
-);
+        );
 
         file_put_contents($this->nodesAwkward->url(), <<<'EOS'
 <?php
@@ -91,7 +91,7 @@ namespace {
 }
 ?>
 EOS
-);
+        );
 
         chmod($this->secrets->url(), 0333); // Remove List Directory (Read) Permissions
 
