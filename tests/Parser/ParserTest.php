@@ -66,4 +66,9 @@ class ParserTest extends TestCase
     {
         $this->assertCount(0, $this->parser->parse($this->cache->url()));
     }
+
+    public function testDirectory(): void
+    {
+        $this->assertCount(0, $this->parser->parse($this->data->url()));
+    }
 }

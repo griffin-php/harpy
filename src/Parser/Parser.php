@@ -29,7 +29,7 @@ class Parser
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
 
         foreach ($filenames as $filename) {
-            if (! is_readable($filename)) {
+            if ((! is_file($filename)) || (! is_readable($filename))) {
                 continue;
             }
 
