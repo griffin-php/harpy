@@ -41,4 +41,9 @@ class FinderTest extends TestCase
         $this->assertContains($this->oneOne->url(), $filenames);
         $this->assertContains($this->oneTwo->url(), $filenames);
     }
+
+    public function testDirectoryWithoutPermissions(): void
+    {
+        $this->assertCount(0, $this->finder->find($this->secrets->url()));
+    }
 }

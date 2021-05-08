@@ -43,6 +43,10 @@ trait RootTrait
 
         $this->nodesAwkward = vfsStream::newFile('Awkward.php')->at($this->nodes);
 
+        $this->secrets = vfsStream::newDirectory('secrets')->at($this->root);
+
+        $this->passwd = vfsStream::newFile('passwd')->at($this->secrets);
+
         file_put_contents($this->foo->url(), '<?php class Foo {}');
         file_put_contents($this->bar->url(), '<?php class Bar {}');
         file_put_contents($this->baz->url(), '<?php class Baz {} class Qux {}');
@@ -77,6 +81,8 @@ namespace {
 ?>
 EOS
 );
+
+        chmod($this->secrets->url(), 0333); // Remove Read Permissions
 
         return $this->root;
     }

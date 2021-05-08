@@ -23,7 +23,7 @@ class Finder
         $filepaths = [];
 
         foreach ($patterns as $pattern) {
-            if (is_dir($pattern)) {
+            if (is_dir($pattern) && is_readable($pattern)) {
                 foreach (scandir($pattern) as $filename) {
                     if (! in_array($filename, ['.', '..'])) {
                         $filepaths = array_merge(
