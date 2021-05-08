@@ -51,6 +51,8 @@ trait RootTrait
 
         $this->cache = vfsStream::newFile('cache')->at($this->data);
 
+        $this->duplicated = vfsStream::newFile('Duplicated.php')->at($this->root);
+
         file_put_contents($this->foo->url(), '<?php class Foo {}');
         file_put_contents($this->bar->url(), '<?php class Bar {}');
         file_put_contents($this->baz->url(), '<?php class Baz {} class Qux {}');
@@ -91,6 +93,8 @@ EOS
         file_put_contents($this->cache->url(), '<?php class Cache {}');
 
         chmod($this->cache->url(), 0333); // Remove Read Permissions
+
+        file_put_contents($this->duplicated->url(), '<?php class Duplicated {} class Duplicated {}');
 
         return $this->root;
     }

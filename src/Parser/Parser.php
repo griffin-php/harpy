@@ -50,6 +50,6 @@ class Parser
             }
         }
 
-        return $classnames;
+        return array_unique($classnames);
     }
 }

@@ -71,4 +71,12 @@ class ParserTest extends TestCase
     {
         $this->assertCount(0, $this->parser->parse($this->data->url()));
     }
+
+    public function testDuplicated(): void
+    {
+        $classnames = $this->parser->parse($this->duplicated->url());
+
+        $this->assertCount(1, $classnames);
+        $this->assertContains('Duplicated', $classnames);
+    }
 }
