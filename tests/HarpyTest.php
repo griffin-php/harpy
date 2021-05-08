@@ -11,7 +11,18 @@ use PHPUnit\Framework\TestCase;
 
 class HarpyTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        $this->harpy = new Harpy();
+    }
+
     public function testConstructor(): void
+    {
+        $this->assertInstanceOf(Finder::class, $this->harpy->getFinder());
+        $this->assertInstanceOf(Parser::class, $this->harpy->getParser());
+    }
+
+    public function testConstructorWithParameters(): void
     {
         $finder = $this->createMock(Finder::class);
         $parser = $this->createMock(Parser::class);

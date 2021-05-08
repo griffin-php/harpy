@@ -25,13 +25,13 @@ class Harpy
     /**
      * Constructor
      *
-     * @param Finder $finder Finder
-     * @param Parser $parser Parser
+     * @param ?Finder $finder Finder
+     * @param ?Parser $parser Parser
      */
-    public function __construct(Finder $finder, Parser $parser)
+    public function __construct(?Finder $finder = null, ?Parser $parser = null)
     {
-        $this->finder = $finder;
-        $this->parser = $parser;
+        $this->finder = $finder ?? new Finder();
+        $this->parser = $parser ?? new Parser();
     }
 
     /**
