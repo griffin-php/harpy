@@ -29,6 +29,11 @@ section of `composer.json`, pointing to the latest stable version.
 
 ## Usage
 
+The `Griffin\Harpy\Harpy::search` method use variadic parameters of `string`
+representing files or directories. These directories will be recursively listed
+searching for files. Each file found will be parsed searching for class
+definitions.
+
 ```php
 use Griffin\Harpy\Harpy;
 
@@ -62,3 +67,8 @@ array(6) {
 }
  */
 ```
+
+If Harpy hasn't permissions to list directories or read files, warnings will not
+be raised, because it only searches for classes and not handles errors. Also,
+Harpy is not a class loader, you must use tools like Composer to execute this
+job.
