@@ -13,6 +13,8 @@ Harpy is a micro library to search for classes names inside PHP source code,
 using patterns to find files via patterns and parsing them to retrieve all
 classes defined.
 
+This library is part of [Griffin Project](https://github.com/griffin-php).
+
 ## Installation
 
 This package uses [Composer](https://packagist.org/packages/griffin/harpy) as
