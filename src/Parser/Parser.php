@@ -29,6 +29,10 @@ class Parser
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
 
         foreach ($filenames as $filename) {
+            if (! is_readable($filename)) {
+                continue;
+            }
+
             $nodes = $parser->parse(file_get_contents($filename));
             foreach ($nodes as $node) {
                 if ($node instanceof Namespace_) {

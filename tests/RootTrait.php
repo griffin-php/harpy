@@ -47,6 +47,10 @@ trait RootTrait
 
         $this->passwd = vfsStream::newFile('passwd')->at($this->secrets);
 
+        $this->data = vfsStream::newDirectory('data')->at($this->root);
+
+        $this->cache = vfsStream::newFile('cache')->at($this->data);
+
         file_put_contents($this->foo->url(), '<?php class Foo {}');
         file_put_contents($this->bar->url(), '<?php class Bar {}');
         file_put_contents($this->baz->url(), '<?php class Baz {} class Qux {}');
@@ -82,7 +86,11 @@ namespace {
 EOS
 );
 
-        chmod($this->secrets->url(), 0333); // Remove Read Permissions
+        chmod($this->secrets->url(), 0333); // Remove List Directory (Read) Permissions
+
+        file_put_contents($this->cache->url(), '<?php class Cache {}');
+
+        chmod($this->cache->url(), 0333); // Remove Read Permissions
 
         return $this->root;
     }

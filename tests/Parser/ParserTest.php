@@ -61,4 +61,9 @@ class ParserTest extends TestCase
         $this->assertContains('Nodes\Top', $classnames);
         $this->assertContains('Nodes\Bottom', $classnames);
     }
+
+    public function testForbidden(): void
+    {
+        $this->assertCount(0, $this->parser->parse($this->cache->url()));
+    }
 }
