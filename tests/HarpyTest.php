@@ -39,6 +39,11 @@ class HarpyTest extends TestCase
 
     public function testBasic(): void
     {
+        $this->assertNotEmpty($this->harpy->search($this->root->url()));
+    }
+
+    public function testDirectory(): void
+    {
         $classnames = $this->harpy->search($this->one->url());
 
         $this->assertCount(2, $classnames);
