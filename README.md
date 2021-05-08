@@ -26,3 +26,39 @@ section of `composer.json`, pointing to the latest stable version.
   }
 }
 ```
+
+## Usage
+
+```php
+use Griffin\Harpy\Harpy;
+
+$harpy = new Harpy();
+
+$classnames = $harpy->search(
+    // Files
+    './src/Harpy.php',
+    './tests/HarpyTest.php',
+    // Directories
+    './src',
+    './tests',
+);
+
+var_dump($classnames);
+
+/*
+array(6) {
+  [0]=>
+  string(19) "Griffin\Harpy\Harpy"
+  [1]=>
+  string(27) "GriffinTest\Harpy\HarpyTest"
+  [2]=>
+  string(20) "Griffin\Harpy\Finder"
+  [3]=>
+  string(20) "Griffin\Harpy\Parser"
+  [4]=>
+  string(28) "GriffinTest\Harpy\FinderTest"
+  [5]=>
+  string(28) "GriffinTest\Harpy\ParserTest"
+}
+ */
+```
