@@ -72,3 +72,23 @@ If Harpy hasn't permissions to list directories or read files, warnings will not
 be raised, because it only searches for classes and not handles errors. Also,
 Harpy is not a class loader, you must use tools like Composer to execute this
 job.
+
+## Development
+
+You can use Docker Compose to build an image and run a container to develop and
+test this package.
+
+```bash
+docker-compose build
+docker-compose run --rm php composer install
+docker-compose run --rm php composer test
+```
+
+## References
+
+* [nikic/PHP-Parser](https://github.com/nikic/PHP-Parser): A PHP parser written in PHP
+
+## License
+
+This package is opensource and available under MIT license described in
+[LICENSE](https://github.com/griffin-php/harpy/blob/main/LICENSE).
