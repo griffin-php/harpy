@@ -3,6 +3,13 @@
   "description": "Search for Classes Names inside PHP Source Code",
   "type": "library",
   "license": "MIT",
+  "keywords": [
+    "classes",
+    "classnames",
+    "parser",
+    "finder",
+    "griffin"
+  ],
   "config": {
     "sort-packages": true
   },
