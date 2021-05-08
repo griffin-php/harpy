@@ -6,6 +6,7 @@ namespace Griffin\Harpy;
 
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Namespace_;
+use PhpParser\NodeAbstract;
 use PhpParser\ParserFactory;
 
 /**
@@ -34,22 +35,39 @@ class Parser
             }
 
             $nodes = $parser->parse(file_get_contents($filename));
+
             foreach ($nodes as $node) {
-                if ($node instanceof Namespace_) {
-                    $namespace = implode('\\', $node->name->parts ?? []);
-                    $namespace = ($namespace ? $namespace . '\\' : $namespace);
-                    foreach ($node->stmts as $subnode) {
-                        if ($subnode instanceof Class_) {
-                            $classnames[] = $namespace . $subnode->name->name;
-                        }
-                    }
-                }
-                if ($node instanceof Class_) {
-                    $classnames[] = $node->name->name;
-                }
+                $classnames = array_merge($classnames, $this->findClasses($node));
             }
         }
 
         return array_unique($classnames);
+    }
+
+    /**
+     * Find Classes From Node
+     *
+     * @param NodeAbstract $node Node
+     * @return string[] Expected Values
+     */
+    protected function findClasses(NodeAbstract $node): array
+    {
+        $classnames = [];
+
+        if ($node instanceof Namespace_) {
+            $namespace = implode('\\', $node->name->parts ?? []);
+            $namespace = ($namespace ? $namespace . '\\' : $namespace);
+            foreach ($node->stmts as $subnode) {
+                if ($subnode instanceof Class_) {
+                    $classnames[] = $namespace . $subnode->name->name;
+                }
+            }
+        }
+
+        if ($node instanceof Class_) {
+            $classnames[] = $node->name->name;
+        }
+
+        return $classnames;
     }
 }

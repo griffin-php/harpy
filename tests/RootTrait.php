@@ -8,6 +8,11 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamFile;
 
+/**
+ * Root Trait
+ *
+ * @SuppressWarnings(PHPMD.StaticAccess)
+ */
 trait RootTrait
 {
     protected vfsStreamDirectory $root;

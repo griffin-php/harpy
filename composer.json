@@ -12,6 +12,7 @@
   "require-dev": {
     "mikey179/vfsstream": "^1.6",
     "php-parallel-lint/php-parallel-lint": "~1.3.0",
+    "phpmd/phpmd": "~2.10.0",
     "phpunit/phpunit": "^9.5",
     "sebastian/phpcpd": "~6.0.3"
   },
@@ -29,7 +30,8 @@
     "test": [
       "parallel-lint src tests",
       "phpunit",
-      "phpcpd src tests"
+      "phpcpd src tests",
+      "phpmd src,tests text phpmd.xml"
     ]
   }
 }
