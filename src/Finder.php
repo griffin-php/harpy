@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Griffin\Harpy\Finder;
+namespace Griffin\Harpy;
 
 /**
  * Finder

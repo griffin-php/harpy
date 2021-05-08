@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Griffin\Harpy;
 
-use Griffin\Harpy\Finder\Finder;
-use Griffin\Harpy\Parser\Parser;
+use Griffin\Harpy\Finder;
+use Griffin\Harpy\Parser;
 
 /**
  * Harpy

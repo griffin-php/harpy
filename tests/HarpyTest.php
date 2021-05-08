@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace GriffinTest\Harpy;
 
-use Griffin\Harpy\Finder\Finder;
+use Griffin\Harpy\Finder;
 use Griffin\Harpy\Harpy;
-use Griffin\Harpy\Parser\Parser;
+use Griffin\Harpy\Parser;
 use PHPUnit\Framework\TestCase;
 
 class HarpyTest extends TestCase

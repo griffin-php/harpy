@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace GriffinTest\Harpy;
 
-use Griffin\Harpy\Finder\Finder;
-use GriffinTest\Harpy\RootTrait;
+use Griffin\Harpy\Finder;
 use PHPUnit\Framework\TestCase;
 
 class FinderTest extends TestCase

@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GriffinTest\Harpy\Parser;
+namespace GriffinTest\Harpy;
 
-use Griffin\Harpy\Parser\Parser;
-use GriffinTest\Harpy\RootTrait;
+use Griffin\Harpy\Parser;
 use PHPUnit\Framework\TestCase;
 
 class ParserTest extends TestCase
