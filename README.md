@@ -10,8 +10,7 @@ Search for Classes Names inside PHP Source Code
 ## Description
 
 Harpy is a micro library to search for classes names inside PHP source code,
-using patterns to find files via patterns and parsing them to retrieve all
-classes defined.
+using patterns to find files and parsing them to retrieve all defined classes.
 
 This library is part of [Griffin Project](https://github.com/griffin-php).
 
