@@ -65,7 +65,12 @@ class Harpy
     {
         array_unshift($patterns, $pattern);
 
-        $filenames  = $this->getFinder()->find(...$patterns);
+        $filenames = $this->getFinder()->find(...$patterns);
+
+        if (! $filenames) {
+            return [];
+        }
+
         $classnames = $this->getParser()->parse(...$filenames);
 
         return $classnames;
