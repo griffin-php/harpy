@@ -62,4 +62,9 @@ class HarpyTest extends TestCase
         $this->assertContains('One\One', $classnames);
         $this->assertContains('One\Two', $classnames);
     }
+
+    public function testEmpty(): void
+    {
+        $this->assertCount(0, $this->harpy->search($this->root->url() . '/Unknown.php'));
+    }
 }
